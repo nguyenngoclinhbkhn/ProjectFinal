@@ -18,8 +18,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public abstract int initLayout();
-    public abstract void initVariable();
     public abstract void initView();
+    public abstract void initVariable();
 
 
 }

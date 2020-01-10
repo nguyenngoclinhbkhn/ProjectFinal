@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#0cd6d3</color>
+    <color name="colorNewBlue">#47ae07</color>
+    <color name="colorBlack">#0d0d0d</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorOldBlue">#05ede2</color>
+    <color name="colorGray">#AA8A8A</color>
+    <color name="colorNewGray">#CAC1C1</color>
+    <color name="colorOrange">#ff5101</color>
+    <color name="colorGreen">#01fa26</color>
+    <color name="colorName">#615d5d</color>
+    <color name="colorRed">#e90004</color>
+    <color name="backGround">#1606a4</color>
+    <color name="colorViolet">#8d3aba</color>
+    <color name="colorYellow">#edcf09</color>
+    <color name="colorOldBlue1">#11857D</color>
+    <color name="colorBLueMain">#17BEB4</color>
+
+    <color name="colorRoomFalse">#228D84</color>
+    <color name="colorRoomTrue">#05423F</color>
+    <color name="colorUserFalse">#089991</color>
+    <color name="colorNewRoom">#34E6D4</color>
+    <color name="colorOldRoom">#1C6D67</color>
+    <color name="colorLogin">#18746C</color>
+
 </resources>
