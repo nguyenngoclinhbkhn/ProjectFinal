@@ -61,6 +61,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="2"
+                android:paddingLeft="5dp"
                 android:gravity="center_vertical"
                 android:text="Nhiệt độ cao nhất"
                 android:textColor="@color/colorWhite"
@@ -96,6 +97,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="2"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
                 android:text="Nhiệt độ thấp nhất"
                 android:textColor="@color/colorWhite"
                 android:textSize="22sp"
@@ -133,6 +135,7 @@
                 android:text="Độ ẩm cao nhất"
                 android:textColor="@color/colorWhite"
                 android:textSize="22sp"
+                android:paddingLeft="5dp"
                 android:textStyle="bold" />
 
             <EditText
@@ -165,6 +168,7 @@
                 android:layout_weight="2"
                 android:gravity="center_vertical"
                 android:text="Độ ẩm thấp nhất"
+                android:paddingLeft="5dp"
                 android:textColor="@color/colorWhite"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -193,14 +197,14 @@
         android:layout_gravity="center"
         android:layout_weight="2"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="15dp">
 
         <Button
             android:id="@+id/btnCancelSetting"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="8dp"
+            android:layout_margin="12dp"
             android:layout_weight="1"
             android:background="@drawable/bg_ok_information"
             android:fontFamily="@font/lato_light"
@@ -214,7 +218,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="8dp"
+            android:layout_margin="12dp"
             android:layout_weight="1"
             android:background="@drawable/bg_ok_information"
             android:fontFamily="@font/lato_light"

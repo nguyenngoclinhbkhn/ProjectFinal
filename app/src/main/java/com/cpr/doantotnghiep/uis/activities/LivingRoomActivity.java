@@ -10,6 +10,8 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,6 +31,7 @@ import com.cpr.doantotnghiep.model.Stairs;
 import com.cpr.doantotnghiep.service.WarningService;
 import com.cpr.doantotnghiep.uis.BaseActivity;
 import com.cpr.doantotnghiep.uis.activities.home.HomeActivity;
+import com.cpr.doantotnghiep.uis.fragment.DialogInformation;
 import com.cpr.doantotnghiep.uis.fragment.DialogSetup;
 import com.cpr.doantotnghiep.utils.HomeConfig;
 import com.google.firebase.database.DataSnapshot;
@@ -39,6 +42,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.zip.Inflater;
 
 import dmax.dialog.SpotsDialog;
 
@@ -167,8 +171,8 @@ public class LivingRoomActivity extends BaseActivity implements View.OnClickList
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Air air = dataSnapshot.getValue(Air.class);
-                txtHumidity.setText(String.valueOf(air.getHumidity()));
-                txtTemperature.setText(String.valueOf(air.getTemperature()));
+                txtHumidity.setText(String.valueOf(air.getHumidity()) + " %");
+                txtTemperature.setText(String.valueOf(air.getTemperature()) + " \u2103");
             }
 
             @Override
@@ -177,26 +181,20 @@ public class LivingRoomActivity extends BaseActivity implements View.OnClickList
             }
         });
 
-        imgSetupLamp.setOnLongClickListener(new View.OnLongClickListener() {
+
+        imgSetupLamp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View view) {
+            public void onClick(View v) {
                 showMenuSetupLamp();
-                return false;
             }
         });
-
-
-        imgCurtains.setOnLongClickListener(new View.OnLongClickListener() {
+        imgCurtains.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View view) {
+            public void onClick(View v) {
                 showMenuCurtains();
-                return false;
             }
         });
     }
-
-
-
 
 
     private void showMenuSetupLamp() {
@@ -278,14 +276,9 @@ public class LivingRoomActivity extends BaseActivity implements View.OnClickList
                 } else {
                     referenceCurtain.child("state").setValue(1);
                     referenceCurtain.child("stop").setValue(1);
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            referenceCurtain.child("state").setValue(2);
-//                        }
-//                    }, time);
                 }
                 referenceCurtain.child("automatic").setValue(0);
+                new SetValueCurtainAsync().execute(time);
             }
             break;
             case R.id.imgViewLampStairsLivingRoom: {
@@ -349,12 +342,7 @@ public class LivingRoomActivity extends BaseActivity implements View.OnClickList
                 referenceCurtain.child("state").setValue(1);
                 referenceCurtain.child("stop").setValue(1);
                 referenceCurtain.child("automatic").setValue(0);
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        referenceCurtain.child("state").setValue(2);
-//                    }
-//                }, time);
+                new SetValueCurtainAsync().execute(time);
 
             }
             break;
@@ -362,6 +350,7 @@ public class LivingRoomActivity extends BaseActivity implements View.OnClickList
                 referenceCurtain.child("state").setValue(0);
                 referenceCurtain.child("stop").setValue(1);
                 referenceCurtain.child("automatic").setValue(0);
+                new SetValueCurtainAsync().execute(time);
             }
             break;
         }
@@ -386,13 +375,9 @@ public class LivingRoomActivity extends BaseActivity implements View.OnClickList
         return false;
     }
 
-    private class SetValueCurtainAsync extends AsyncTask<Integer, Void, Integer> {
+    private class SetValueCurtainAsync extends AsyncTask<Integer, Void, Void> {
         private SpotsDialog spotsDialog;
-        private int time;
 
-        public SetValueCurtainAsync(int time) {
-            this.time = time;
-        }
 
         @Override
         protected void onPreExecute() {
@@ -402,21 +387,35 @@ public class LivingRoomActivity extends BaseActivity implements View.OnClickList
         }
 
         @Override
-        protected Integer doInBackground(Integer... integers) {
+        protected Void doInBackground(Integer... integers) {
             int value = integers[0];
             try {
                 Thread.sleep(time);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            return value;
+            return null;
         }
 
         @Override
-        protected void onPostExecute(Integer integer) {
-            referenceCurtain.child("state").setValue(2);
-            spotsDialog.show();
+        protected void onPostExecute(Void aVoid) {
+            spotsDialog.cancel();
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_information, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.itemInfor : {
+                DialogInformation.getInstance().show(getSupportFragmentManager(), "");
+            }break;
+        }
+        return true;
+    }
 }

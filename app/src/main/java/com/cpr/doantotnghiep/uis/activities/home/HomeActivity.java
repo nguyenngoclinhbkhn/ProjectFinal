@@ -144,11 +144,6 @@ public class HomeActivity extends BaseActivity implements AdapterRoom.OnRoomList
         list.add(new Room("Phòng ngủ", R.drawable.bed, KindRoom.BEDROOM));
         list.add(new Room("Phòng tắm", R.drawable.bathtub, KindRoom.BATHROOM));
         list.add(new Room("Nhà bếp", R.drawable.kitchen, KindRoom.KITCHEN));
-        list.add(new Room("Test1", R.drawable.house, KindRoom.TEST1));
-        list.add(new Room("Test2", R.drawable.house, KindRoom.TEST2));
-        list.add(new Room("Test3", R.drawable.house, KindRoom.TEST3));
-        list.add(new Room("Test4", R.drawable.house, KindRoom.TEST4));
-        list.add(new Room("Test5", R.drawable.house, KindRoom.TEST5));
         return list;
     }
 
