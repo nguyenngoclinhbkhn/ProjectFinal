@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
@@ -39,6 +40,8 @@ import com.google.firebase.database.DatabaseReference;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+
 public class HomeActivity extends BaseActivity implements AdapterRoom.OnRoomListener {
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
@@ -48,6 +51,7 @@ public class HomeActivity extends BaseActivity implements AdapterRoom.OnRoomList
     private int permission;
     private RecyclerView recyclerView;
     private AdapterRoom adapterRoom;
+
     @Override
     public int initLayout() {
         return R.layout.activity_home;
@@ -64,11 +68,13 @@ public class HomeActivity extends BaseActivity implements AdapterRoom.OnRoomList
 
     @Override
     public void initVariable() {
+        sharedPreferences = getSharedPreferences(HomeConfig.LOGIN, Context.MODE_PRIVATE);
+        permission = sharedPreferences.getInt(HomeConfig.PERMISSION, 0);
         Intent intent = new Intent(this, WarningService.class);
         startService(intent);
         setupRecyclerView();
-        sharedPreferences = getSharedPreferences(HomeConfig.LOGIN, Context.MODE_PRIVATE);
-        permission = sharedPreferences.getInt(HomeConfig.PERMISSION, 0);
+
+        Log.e("TAG", "permission" + permission);
         imgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,8 +92,9 @@ public class HomeActivity extends BaseActivity implements AdapterRoom.OnRoomList
                         } else {
                             Toast.makeText(HomeActivity.this, "You can not access", Toast.LENGTH_SHORT).show();
                         }
-                    } break;
-                    case R.id.itemSetting : {
+                    }
+                    break;
+                    case R.id.itemSetting: {
                         if (permission == 3) {
                             startActivity(new Intent(HomeActivity.this, SettingActivity.class));
                             finish();
@@ -96,10 +103,11 @@ public class HomeActivity extends BaseActivity implements AdapterRoom.OnRoomList
                         }
                     }
                     break;
-                    case R.id.itemEditAccount : {
+                    case R.id.itemEditAccount: {
                         startActivity(new Intent(HomeActivity.this, EditAccountActivity.class));
                         finish();
-                    } break;
+                    }
+                    break;
                     case R.id.itemMenuLogout: {
                         AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
                         builder.setTitle("Warning");
@@ -131,44 +139,76 @@ public class HomeActivity extends BaseActivity implements AdapterRoom.OnRoomList
         });
     }
 
-    private void setupRecyclerView(){
+    private void setupRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+
         adapterRoom = new AdapterRoom(this, this);
+
         recyclerView.setAdapter(adapterRoom);
         adapterRoom.setList(getList());
     }
 
-    private List<Room> getList(){
+    private List<Room> getList() {
         List<Room> list = new ArrayList<>();
-        list.add(new Room("Phòng khách", R.drawable.sofa, KindRoom.LIVINGROOM));
-        list.add(new Room("Phòng ngủ", R.drawable.bed, KindRoom.BEDROOM));
-        list.add(new Room("Phòng tắm", R.drawable.bathtub, KindRoom.BATHROOM));
-        list.add(new Room("Nhà bếp", R.drawable.kitchen, KindRoom.KITCHEN));
+        if (permission == 3) {
+            list.add(new Room("Phòng khách", R.drawable.sofa, KindRoom.LIVINGROOM, false));
+            list.add(new Room("Phòng ngủ", R.drawable.bed, KindRoom.BEDROOM, false));
+            list.add(new Room("Phòng tắm", R.drawable.bathtub, KindRoom.BATHROOM, false));
+            list.add(new Room("Nhà bếp", R.drawable.kitchen, KindRoom.KITCHEN, false));
+        } else {
+            list.add(new Room("Phòng khách", R.drawable.sofa, KindRoom.LIVINGROOM, false));
+            list.add(new Room("Phòng ngủ", R.drawable.bed, KindRoom.BEDROOM, true));
+            list.add(new Room("Phòng tắm", R.drawable.bathtub, KindRoom.BATHROOM, true));
+            list.add(new Room("Nhà bếp", R.drawable.kitchen, KindRoom.KITCHEN, true));
+        }
         return list;
     }
 
     @Override
-    public void onRoomClicked(KindRoom room) {
-        switch (room){
+    public void onRoomClicked(Room room) {
+
+        switch (room.getKindRoom()) {
             case BATHROOM: {
+                if (room.isLock()) {
+                    Toasty.error(this, "You can't access this room", Toasty.LENGTH_SHORT).show();
+                }else{
+                    Toasty.success(this, "See you soon", Toasty.LENGTH_SHORT).show();
+                }
+            }
+            break;
+            case LIVINGROOM: {
+                Log.e("TAG", "living");
 
-            } break;
-            case LIVINGROOM:{
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        startActivity(new Intent(HomeActivity.this, LivingRoomActivity.class));
-                        finish();
-                    }
-                }, 150);
+                if (room.isLock()) {
 
-            } break;
+                } else {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            startActivity(new Intent(HomeActivity.this, LivingRoomActivity.class));
+                            finish();
+                        }
+                    }, 150);
+                }
+
+            }
+            break;
             case KITCHEN: {
-
-            } break;
+                if (room.isLock()) {
+                    Toasty.error(this, "You can't access this room", Toasty.LENGTH_SHORT).show();
+                } else {
+                    Toasty.success(this, "See you soon", Toasty.LENGTH_SHORT).show();
+                }
+            }
+            break;
             case BEDROOM: {
-
-            } break;
+                if (room.isLock()) {
+                    Toasty.error(this, "You can't access this room", Toasty.LENGTH_SHORT).show();
+                } else {
+                    Toasty.success(this, "See you soon", Toasty.LENGTH_SHORT).show();
+                }
+            }
+            break;
         }
     }
 }

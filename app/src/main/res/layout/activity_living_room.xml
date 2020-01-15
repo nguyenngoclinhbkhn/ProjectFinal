@@ -123,8 +123,8 @@
                     android:id="@+id/imgViewStateCeilingFansLivingRoom"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/closed_door"
-                    android:paddingTop="5dp" />
+                    android:paddingTop="5dp"
+                    android:src="@drawable/closed_door" />
 
                 <ImageView
                     android:id="@+id/imgViewControlCeilingFanLivingRoom"
@@ -147,18 +147,11 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="22dp"
-                        android:id="@+id/setupLamp"
-                        android:src="@drawable/stairs" />
-
-                    <ImageView
                         android:id="@+id/imgViewLampStairsLivingRoom"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="100dp"
                         android:layout_marginLeft="8dp"
-                        android:src="@drawable/lamp_off" />
+                        android:src="@drawable/off_lamp" />
                 </RelativeLayout>
 
                 <RelativeLayout

@@ -69,7 +69,7 @@ public class LivingRoomActivity extends BaseActivity implements View.OnClickList
     private int stateCurtain;
     private int count = 0;
     private boolean isOn;
-    private ImageView imgSetupLamp;
+//    private ImageView imgSetupLamp;
     private PopupMenu popupMenu;
     private PopupMenu popupMenuCurtain;
     private int time;
@@ -92,7 +92,6 @@ public class LivingRoomActivity extends BaseActivity implements View.OnClickList
         imgMicro = findViewById(R.id.imgViewMicrophoneLivingRoom);
         txtTemperature = findViewById(R.id.txtTemperatureLivingRoom);
         txtHumidity = findViewById(R.id.txtHumidityLivingRoom);
-        imgSetupLamp = findViewById(R.id.setupLamp);
     }
 
 
@@ -115,9 +114,9 @@ public class LivingRoomActivity extends BaseActivity implements View.OnClickList
                 Stairs stairs = dataSnapshot.getValue(Stairs.class);
                 stateLamp1 = stairs.getState1();
                 if (stairs.getState1() == 1) {
-                    imgControlLamp.setImageResource(R.drawable.lamp_on);
+                    imgControlLamp.setImageResource(R.drawable.on_lamp);
                 } else {
-                    imgControlLamp.setImageResource(R.drawable.lamp_off);
+                    imgControlLamp.setImageResource(R.drawable.off_lamp);
                 }
             }
 
@@ -182,12 +181,7 @@ public class LivingRoomActivity extends BaseActivity implements View.OnClickList
         });
 
 
-        imgSetupLamp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showMenuSetupLamp();
-            }
-        });
+
         imgCurtains.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -196,14 +190,6 @@ public class LivingRoomActivity extends BaseActivity implements View.OnClickList
         });
     }
 
-
-    private void showMenuSetupLamp() {
-        popupMenu = new PopupMenu(this, imgSetupLamp);
-        popupMenu.getMenuInflater().inflate(R.menu.menu_setup_lamp, popupMenu.getMenu());
-        popupMenu.setOnMenuItemClickListener(this);
-        popupMenu.show();
-
-    }
 
     private void showMenuCurtains() {
         popupMenuCurtain = new PopupMenu(this, imgCurtains);

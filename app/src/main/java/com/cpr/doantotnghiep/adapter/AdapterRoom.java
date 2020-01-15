@@ -1,6 +1,7 @@
 package com.cpr.doantotnghiep.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ public class AdapterRoom extends RecyclerView.Adapter<AdapterRoom.RoomHolder> {
         this.listener = listener;
     }
 
+
     public void setList(List<Room> list){
         this.list = list;
         notifyDataSetChanged();
@@ -48,10 +50,16 @@ public class AdapterRoom extends RecyclerView.Adapter<AdapterRoom.RoomHolder> {
         final Room room = list.get(position);
         Glide.with(context).load(room.getImage()).into(holder.img);
         holder.txt.setText(room.getRoom());
+        Log.e("TAG", "isLock " + room.isLock());
+        if (room.isLock() == false){
+            holder.imgLock.setVisibility(View.GONE);
+        }else{
+            holder.imgLock.setVisibility(View.VISIBLE);
+        }
         holder.linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onRoomClicked(room.getKindRoom());
+                listener.onRoomClicked(room);
             }
         });
     }
@@ -65,15 +73,17 @@ public class AdapterRoom extends RecyclerView.Adapter<AdapterRoom.RoomHolder> {
         private LinearLayout linear;
         private ImageView img;
         private TextView txt;
+        private ImageView imgLock;
         public RoomHolder(@NonNull View itemView) {
             super(itemView);
             linear = itemView.findViewById(R.id.linearItemRoom);
             img = itemView.findViewById(R.id.imgRoom);
             txt = itemView.findViewById(R.id.txtRoom);
+            imgLock = itemView.findViewById(R.id.imgLock);
         }
     }
 
     public interface OnRoomListener{
-        void onRoomClicked(KindRoom room);
+        void onRoomClicked(Room room);
     }
 }
