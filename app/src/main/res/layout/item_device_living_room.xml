@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="3dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#076BB5"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgDevice"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/on_lamp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtNameDevice"
+            android:fontFamily="@font/lato_light"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/colorWhite"
+            android:layout_toRightOf="@+id/imgDevice" />
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:animateLayoutChanges="true"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/controlDevice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumb="@drawable/thumb_test"
+                app:track="@drawable/track_test"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" />
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:indeterminateTint="@color/colorWhite"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/progressControlDevice" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

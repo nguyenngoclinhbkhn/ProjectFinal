@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cpr.doantotnghiep">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"></uses-permission>
+    package="com.bkhn.doantotnghiep">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <application
         android:allowBackup="true"
-        android:icon="@drawable/house"
+        android:icon="@drawable/icon_app"
         android:label="@string/DoAnTotNghiep"
-        android:roundIcon="@drawable/house"
+        android:roundIcon="@drawable/icon_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".uis.activities.login.LoginActivity">
+        <activity android:name="com.bkhn.doantotnghiep.uis.activities.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".uis.activities.register.RegisterActivity" />
-        <activity android:name=".uis.activities.LivingRoomActivity"></activity>
-        <activity android:name=".uis.activities.manager_user.ManagerUserActivity" />
-        <activity android:name=".uis.activities.edit_user.EditUserActivity" />
-        <activity android:name=".uis.activities.setting.SettingActivity" />
-        <activity android:name=".uis.activities.home.HomeActivity" />
-        <activity android:name=".uis.activities.edit_account.EditAccountActivity"></activity>
-        <service android:name=".service.WarningService"></service>
+        <activity android:name="com.bkhn.doantotnghiep.uis.activities.LivingRoomActivity" />
+        <activity android:name="com.bkhn.doantotnghiep.uis.activities.setting.SettingActivity" />
+        <activity android:name="com.bkhn.doantotnghiep.uis.activities.home.HomeActivity" />
+
+        <service android:name="com.bkhn.doantotnghiep.service.WarningService" />
     </application>
 
 </manifest>

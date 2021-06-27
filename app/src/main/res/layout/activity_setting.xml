@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorOldBlue1"
+    android:background="@color/colorBLueMain"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -12,7 +12,7 @@
         app:contentInsetEnd="0dp"
         app:contentInsetStart="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorOldBlue">
+        android:background="@color/colorAccent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/bg_img_back"
-                android:padding="8dp" />
+                android:padding="15dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -62,132 +62,30 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="2"
                 android:paddingLeft="5dp"
-                android:gravity="center_vertical"
-                android:text="Nhiệt độ cao nhất"
-                android:textColor="@color/colorWhite"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/edTemperatureMax"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/lato_light"
                 android:gravity="center"
-                android:hint="Nhiet do ..."
-                android:inputType="number"
+                android:text="Mức độ khí gas cho phép "
                 android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorGray"
                 android:textSize="22sp"
                 android:textStyle="bold" />
-        </LinearLayout>
 
-        <LinearLayout
+
+        </LinearLayout>
+        <EditText
+            android:id="@+id/edTemperatureMax"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="2"
-                android:gravity="center_vertical"
-                android:paddingLeft="5dp"
-                android:text="Nhiệt độ thấp nhất"
-                android:textColor="@color/colorWhite"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/edTemperatureMin"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/lato_light"
-                android:gravity="center"
-                android:hint="Nhiet do ..."
-                android:inputType="number"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorGray"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="2"
-                android:gravity="center_vertical"
-                android:text="Độ ẩm cao nhất"
-                android:textColor="@color/colorWhite"
-                android:textSize="22sp"
-                android:paddingLeft="5dp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/edHumidityMax"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/lato_light"
-                android:gravity="center"
-                android:hint="Do am ..."
-                android:inputType="number"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorGray"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="2"
-                android:gravity="center_vertical"
-                android:text="Độ ẩm thấp nhất"
-                android:paddingLeft="5dp"
-                android:textColor="@color/colorWhite"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/edHumidityMin"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/lato_light"
-                android:gravity="center"
-                android:hint="Do am ..."
-                android:inputType="number"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorGray"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/lato_light"
+            android:gravity="center"
+            android:paddingVertical="15dp"
+            android:layout_marginHorizontal="50dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Hãy nhập giá trị  ..."
+            android:inputType="number"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGray"
+            android:textSize="22sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 

@@ -2,8 +2,8 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#0cd6d3</color>
-    <color name="colorNewBlue">#47ae07</color>
+    <color name="colorAccent">#0A89CD</color>
+    <color name="colorNewBlue">#25AEA2</color>
     <color name="colorBlack">#0d0d0d</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorOldBlue">#05ede2</color>
@@ -17,7 +17,7 @@
     <color name="colorViolet">#8d3aba</color>
     <color name="colorYellow">#edcf09</color>
     <color name="colorOldBlue1">#11857D</color>
-    <color name="colorBLueMain">#17BEB4</color>
+    <color name="colorBLueMain">#1378C5</color>
 
     <color name="colorRoomFalse">#228D84</color>
     <color name="colorRoomTrue">#05423F</color>

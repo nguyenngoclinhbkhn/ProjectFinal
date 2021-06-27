@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <item android:title="Quản lý"
-        android:id="@+id/itemMenuManagerUser"
-        android:icon="@drawable/team"></item>
     <item android:title="Cài đặt"
         android:icon="@drawable/setting"
         android:id="@+id/itemSetting"></item>
-    <item android:title="Sửa thông tin tài khoản"
-        android:id="@+id/itemEditAccount"
-        android:icon="@drawable/edit"></item>
+<!--    <item android:title="Sửa thông tin tài khoản"-->
+<!--        android:id="@+id/itemEditAccount"-->
+<!--        android:icon="@drawable/edit"></item>-->
     <item android:title="Đăng xuất"
         android:id="@+id/itemMenuLogout"
         app:showAsAction="always"

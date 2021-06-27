@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayoutHome"
     android:layout_width="match_parent"
-    android:background="@color/colorOldBlue1"
+    android:background="@color/colorBLueMain"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
@@ -16,7 +16,7 @@
             android:id="@+id/toolbarHome"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorBLueMain"
+            android:background="@color/colorAccent"
             app:contentInsetEnd="0dp"
             app:contentInsetStart="0dp">
 
@@ -28,7 +28,7 @@
                     android:id="@+id/imgViewMenu"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:padding="8dp"
+                    android:padding="10dp"
                     android:src="@drawable/list" />
 
                 <TextView
@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:itemTextColor="@color/colorWhite"
-        android:backgroundTint="@color/colorOldBlue1"
+        android:backgroundTint="@color/colorBLueMain"
         android:layout_gravity="start"
         app:headerLayout="@layout/header"
 
